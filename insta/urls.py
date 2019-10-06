@@ -15,8 +15,14 @@ Including another URLconf
 """
 
 from django.urls import path
-from insta.views import helloWorld
+from insta.views import helloWorldView, postView, postDetailView, postCreateView, postEditView, postDeleteView
+
 
 urlpatterns = [
-    path('', helloWorld.as_view(), name='home')
+    path('', helloWorldView.as_view(), name='home'),
+    path('posts', postView.as_view(), name='posts'),
+    path('post/<int:pk>', postDetailView.as_view(), name='post_detail'),
+    path('post/add', postCreateView.as_view(), name='add_post'),
+    path('post/edit/<int:pk>', postEditView.as_view(), name='edit_title'),
+    path('post/delete/<int:pk>', postDeleteView.as_view(), name='post_delete')
 ]
